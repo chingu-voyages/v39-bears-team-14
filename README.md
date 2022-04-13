@@ -1,14 +1,30 @@
-# voyage-tasks
+# WinXP
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+🏁 Web based Windows XP desktop recreation. To be heavily modified by **Chingu v39 Bears Team 14** to make this project even more awesome!
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+Features:
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+- Drag and resize, minimize, maximize windows
+- Open applications from desktop icons or start menu
+- Minesweeper, Internet Explorer, My Computer, Notepad, Winamp, Paint
+- Power off menu
 
-> Own it & Make it your Own!
+## ~~[Try it!](https://winxp.now.sh)~~
+
+~~Windows XP 👉 https://winxp.now.sh~~
+
+Our own demo will be up soon!
+
+## Contributing
+
+Generally open an issue (or comment on an issue if there's one already) before starting work on a PR.
+
+## Disclaimer
+
+The Windows XP name, artwork, trademark are property of Microsoft. This project is provided for educational purposes only. It is not affiliated with and has not been approved by Microsoft.
+
+## Acknowledgements
+
+- [WinXP](https://github.com/ShizukuIchi/winXP), Web based Windows XP desktop recreation by: [ShizukuIchi](https://github.com/ShizukuIchi)
+- [Webamp](https://github.com/captbaritone/webamp), Winamp 2 reimplementation by: [captbaritone](https://github.com/captbaritone)
+- [JS Paint](https://github.com/1j01/jspaint), Paint reimplementation by: [1j01](https://github.com/1j01)
