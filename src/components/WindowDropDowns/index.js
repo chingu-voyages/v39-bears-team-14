@@ -18,7 +18,7 @@ export function WindowDropDowns({
     onClickItem(name);
   }
   function onMouseUp(e) {
-    if (!dropDown.current.contains(e.target)) setOpenOption('');
+    if (!dropDown.current?.contains(e.target)) setOpenOption('');
   }
   useEffect(() => {
     window.addEventListener('mouseup', onMouseUp);

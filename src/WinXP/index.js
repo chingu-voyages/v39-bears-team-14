@@ -272,9 +272,6 @@ function WinXP() {
   function onMouseUpDesktop(e) {
     dispatch({ type: END_SELECT });
   }
-  function onIconsSelected(iconIds) {
-    dispatch({ type: SELECT_ICONS, payload: iconIds });
-  }
   function onClickModalButton(text) {
     dispatch({ type: CANCEL_POWER_OFF });
     dispatch({
@@ -300,7 +297,7 @@ function WinXP() {
         appSettings={appSettings}
         mouse={mouse}
         selecting={state.selecting}
-        setSelectedIcons={onIconsSelected}
+        dispatch={dispatch}
       />
       <DashedBox startPos={state.selecting} mouse={mouse} />
       <Windows

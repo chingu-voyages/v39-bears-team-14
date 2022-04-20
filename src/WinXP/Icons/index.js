@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import { SELECT_ICONS } from 'WinXP/constants/actions';
 
 function Icons({
   icons,
@@ -8,7 +9,7 @@ function Icons({
   displayFocus,
   mouse,
   selecting,
-  setSelectedIcons,
+  dispatch,
 }) {
   const [iconsRect, setIconsRect] = useState([]);
   function measure(rect) {
@@ -21,14 +22,14 @@ function Icons({
     const sy = Math.min(selecting.y, mouse.docY);
     const sw = Math.abs(selecting.x - mouse.docX);
     const sh = Math.abs(selecting.y - mouse.docY);
-    const selectedIds = iconsRect
+    const iconIds = iconsRect
       .filter((rect) => {
         const { x, y, w, h } = rect;
         return x - sx < sw && sx - x < w && y - sy < sh && sy - y < h;
       })
       .map((icon) => icon.id);
-    setSelectedIcons(selectedIds);
-  }, [iconsRect, setSelectedIcons, selecting, mouse.docX, mouse.docY]);
+    dispatch({ type: SELECT_ICONS, payload: iconIds });
+  }, [iconsRect, dispatch, selecting, mouse.docX, mouse.docY]);
   return (
     <IconsContainer>
       {icons.map((icon) => (
