@@ -295,7 +295,15 @@ function useElementResize(ref, options) {
       cover.remove();
     };
     // eslint-disable-next-line
-  }, [boundary.top, boundary.right, boundary.bottom, boundary.left, cursorPos]);
+  }, [
+    boundary.top,
+    boundary.right,
+    boundary.bottom,
+    boundary.left,
+    cursorPos,
+    setOffset,
+    setSize,
+  ]);
   return { offset, size };
 }
 function useCursor(ref, threshold, resizable) {
@@ -370,7 +378,7 @@ function useCursor(ref, threshold, resizable) {
       window.removeEventListener('mouseup', onMouseUp);
     };
     // eslint-disable-next-line
-  }, []);
+  }, [setPosition]);
   return position;
 }
 

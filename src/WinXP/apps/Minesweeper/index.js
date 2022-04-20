@@ -208,19 +208,20 @@ function MineSweeper({ defaultDifficulty, onClose }) {
     }
   }
   useEffect(() => {
+    function checkRemains() {
+      const safeCeils = state.ceils.filter(
+        (ceil) => ceil.state !== 'open' && ceil.minesAround >= 0,
+      );
+      return safeCeils.length;
+    }
     if (state.status === 'started' && checkRemains() === 0) {
       dispatch({ type: 'WON' });
     }
-  });
+  }, [state.status, state.ceils]);
   function onReset(difficulty) {
     dispatch({ type: 'CLEAR_MAP', payload: difficulty });
   }
-  function checkRemains() {
-    const safeCeils = state.ceils
-      .filter((ceil) => ceil.state !== 'open')
-      .filter((ceil) => ceil.minesAround >= 0);
-    return safeCeils.length;
-  }
+
   function openingCeil(index) {
     if (['died', 'won'].includes(state.status)) return;
     dispatch({ type: 'OPENING_CEIL', payload: index });
@@ -332,14 +333,15 @@ function getNearIndexes(index, rows, columns) {
 
 function useTimer(status) {
   const [seconds, setSeconds] = useState(0);
-  function addSecond() {
-    setSeconds((sec) => sec + 1);
-  }
+
   useEffect(() => {
     let timer;
     switch (status) {
       case 'started':
-        timer = setInterval(addSecond, 1000);
+        timer = setInterval(
+          setSeconds((sec) => sec + 1),
+          1000,
+        );
         break;
       case 'new':
         setSeconds(0);
@@ -348,7 +350,7 @@ function useTimer(status) {
         break;
     }
     return () => clearInterval(timer);
-  }, [status]);
+  }, [status, setSeconds]);
   return seconds;
 }
 

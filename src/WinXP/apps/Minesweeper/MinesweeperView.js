@@ -200,7 +200,7 @@ function MineSweeperView({
     return () => {
       window.removeEventListener('mouseup', onMouseUp);
     };
-  }, []);
+  }, [setOpenBehavior, setMouseDownContent]);
   function onMouseUp(e) {
     setOpenBehavior({ index: -1, behavior: '' });
     setMouseDownContent(false);
@@ -210,7 +210,7 @@ function MineSweeperView({
     return () => {
       window.removeEventListener('mouseup', onMouseUp);
     };
-  }, []);
+  }, [setOpenBehavior, setMouseDownContent]);
   return (
     <div className={className} onContextMenu={(e) => e.preventDefault()}>
       <div className="mine__options">

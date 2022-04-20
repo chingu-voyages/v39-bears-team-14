@@ -53,7 +53,7 @@ function Footer({
       newTime !== time && setTime(newTime);
     }, 1000);
     return () => clearInterval(timer);
-  }, [time]);
+  }, [time, setTime]);
   useEffect(() => {
     const target = menu.current;
     if (!target) return;
@@ -62,7 +62,7 @@ function Footer({
     }
     window.addEventListener('mousedown', onMouseDown);
     return () => window.removeEventListener('mousedown', onMouseDown);
-  }, [menuOn]);
+  }, [menuOn, setMenuOn]);
 
   return (
     <Container onMouseDown={_onMouseDown}>
