@@ -1,4 +1,4 @@
-import React, { useRef, memo } from 'react';
+import { useRef, memo } from 'react';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import styled from 'styled-components';
 

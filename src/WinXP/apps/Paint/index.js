@@ -1,5 +1,3 @@
-import React from 'react';
-
 // add child div to capture mouse event when not focused
 
 function Paint({ onClose, isFocus }) {

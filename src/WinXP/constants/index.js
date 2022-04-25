@@ -1,7 +1,7 @@
 export const FOCUSING = {
-  WINDOW: 'WINDOW',
-  ICON: 'ICON',
-  DESKTOP: 'DESKTOP',
+  WINDOW: 'WINDOW', // any draggable window
+  ICON: 'ICON', // wallpaper and icons
+  DESKTOP: 'DESKTOP', // taskbar and start menu
 };
 export const POWER_STATE = {
   START: 'START',

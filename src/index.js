@@ -12,7 +12,6 @@ ReactDOM.render(<App />, document.getElementById('root'));
 serviceWorker.register();
 
 if (module.hot && !window.frameElement) {
-  console.log('HMR enabled');
   module.hot.accept('./App', () => {
     const NextApp = require('./App').default;
     ReactDOM.render(<NextApp />, document.getElementById('root'));

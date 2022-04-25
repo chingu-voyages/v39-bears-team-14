@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import FooterMenu from './FooterMenu';
@@ -32,9 +32,11 @@ function Footer({
   focusedAppId,
   onMouseDown,
   onClickMenuItem,
+  menuOn,
+  setMenuOn,
 }) {
   const [time, setTime] = useState(getTime);
-  const [menuOn, setMenuOn] = useState(false);
+
   const menu = useRef(null);
   function toggleMenu() {
     setMenuOn((on) => !on);
@@ -45,7 +47,6 @@ function Footer({
   }
   function _onClickMenuItem(name) {
     onClickMenuItem(name);
-    setMenuOn(false);
   }
   useEffect(() => {
     const timer = setInterval(() => {
@@ -54,15 +55,21 @@ function Footer({
     }, 1000);
     return () => clearInterval(timer);
   }, [time, setTime]);
+
+  /*
   useEffect(() => {
     const target = menu.current;
     if (!target) return;
+
     function onMouseDown(e) {
-      if (!target.contains(e.target) && menuOn) setMenuOn(false);
+      if (!target.contains(e.target) && menuOn) {
+        setMenuOn(false);
+      }
     }
     window.addEventListener('mousedown', onMouseDown);
     return () => window.removeEventListener('mousedown', onMouseDown);
   }, [menuOn, setMenuOn]);
+  */
 
   return (
     <Container onMouseDown={_onMouseDown}>

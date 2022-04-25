@@ -1,4 +1,5 @@
-import React, { useReducer, useRef, useCallback } from 'react';
+// This is the "main" WinXP component
+import { useReducer, useRef, useCallback, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import useMouse from 'react-use/lib/useMouse';
 import ga from 'react-ga';
@@ -180,6 +181,7 @@ const reducer = (state, action = { type: '' }) => {
 };
 function WinXP() {
   const [state, dispatch] = useReducer(reducer, initState);
+  const [menuOn, setMenuOn] = useState(false);
   const ref = useRef(null);
   const mouse = useMouse(ref);
   const focusedAppId = getFocusedAppId();
@@ -211,14 +213,24 @@ function WinXP() {
     [focusedAppId],
   );
   function onMouseDownFooterApp(id) {
-    if (focusedAppId === id) {
-      dispatch({ type: MINIMIZE_APP, payload: id });
-    } else {
-      dispatch({ type: FOCUS_APP, payload: id });
-    }
+    dispatch({
+      type: focusedAppId === id ? MINIMIZE_APP : FOCUS_APP,
+      payload: id,
+    });
   }
   function onMouseDownIcon(id) {
     dispatch({ type: FOCUS_ICON, payload: id });
+  }
+  function onMouseDownFooter() {
+    dispatch({ type: FOCUS_DESKTOP });
+  }
+  function onMouseDownDesktop(e) {
+    if (e.target === e.currentTarget) {
+      dispatch({
+        type: START_SELECT,
+        payload: { x: mouse.docX, y: mouse.docY },
+      });
+    }
   }
   function onDoubleClickIcon(component) {
     const appSetting = Object.values(appSettings).find(
@@ -233,10 +245,8 @@ function WinXP() {
       .find((app) => !app.minimized);
     return focusedApp ? focusedApp.id : -1;
   }
-  function onMouseDownFooter() {
-    dispatch({ type: FOCUS_DESKTOP });
-  }
   function onClickMenuItem(o) {
+    setMenuOn(false);
     if (o === 'Internet')
       dispatch({ type: ADD_APP, payload: appSettings['Internet Explorer'] });
     else if (o === 'Minesweeper')
@@ -260,13 +270,6 @@ function WinXP() {
           ...appSettings.Error,
           injectProps: { message: 'C:\\\nApplication not found' },
         },
-      });
-  }
-  function onMouseDownDesktop(e) {
-    if (e.target === e.currentTarget)
-      dispatch({
-        type: START_SELECT,
-        payload: { x: mouse.docX, y: mouse.docY },
       });
   }
   function onMouseUpDesktop(e) {
@@ -314,6 +317,8 @@ function WinXP() {
         focusedAppId={focusedAppId}
         onMouseDown={onMouseDownFooter}
         onClickMenuItem={onClickMenuItem}
+        menuOn={menuOn}
+        setMenuOn={setMenuOn}
       />
       {state.powerState !== POWER_STATE.START && (
         <Modal

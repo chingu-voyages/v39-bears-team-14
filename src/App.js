@@ -1,5 +1,3 @@
-import React from 'react';
-
 import WinXP from 'WinXP';
 import { useGA } from 'hooks';
 
