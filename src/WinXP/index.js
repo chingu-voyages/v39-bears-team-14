@@ -13,6 +13,7 @@ import {
   FOCUS_ICON,
   SELECT_ICONS,
   FOCUS_DESKTOP,
+  FOCUS_START_MENU,
   START_SELECT,
   END_SELECT,
   POWER_OFF,
@@ -150,6 +151,15 @@ const reducer = (state, action = { type: '' }) => {
           isFocus: false,
         })),
       };
+    case FOCUS_START_MENU:
+      return {
+        ...state,
+        focusing: FOCUSING.START_MENU,
+        icons: state.icons.map((icon) => ({
+          ...icon,
+          isFocus: false,
+        })),
+      };
     case START_SELECT:
       return {
         ...state,
@@ -181,6 +191,7 @@ const reducer = (state, action = { type: '' }) => {
 };
 function WinXP() {
   const [state, dispatch] = useReducer(reducer, initState);
+  console.log(state.focusing); // TODO remove this console.log
   const [menuOn, setMenuOn] = useState(false);
   const ref = useRef(null);
   const mouse = useMouse(ref);
@@ -213,6 +224,7 @@ function WinXP() {
     [focusedAppId],
   );
   function onMouseDownFooterApp(id) {
+    // when clicking applications on the taskbar
     dispatch({
       type: focusedAppId === id ? MINIMIZE_APP : FOCUS_APP,
       payload: id,
@@ -319,6 +331,7 @@ function WinXP() {
         onClickMenuItem={onClickMenuItem}
         menuOn={menuOn}
         setMenuOn={setMenuOn}
+        dispatch={dispatch}
       />
       {state.powerState !== POWER_STATE.START && (
         <Modal

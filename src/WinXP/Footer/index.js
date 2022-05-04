@@ -7,6 +7,7 @@ import startButton from 'assets/windowsIcons/start.png';
 import sound from 'assets/windowsIcons/690(16x16).png';
 import usb from 'assets/windowsIcons/394(16x16).png';
 import risk from 'assets/windowsIcons/229(16x16).png';
+import { FOCUS_START_MENU } from 'WinXP/constants/actions';
 
 const getTime = () => {
   const date = new Date();
@@ -34,11 +35,13 @@ function Footer({
   onClickMenuItem,
   menuOn,
   setMenuOn,
+  dispatch,
 }) {
   const [time, setTime] = useState(getTime);
 
   const menu = useRef(null);
   function toggleMenu() {
+    // Set start menu visibility
     setMenuOn((on) => !on);
   }
   function _onMouseDown(e) {
