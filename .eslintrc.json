@@ -1,11 +1,10 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:jsx-a11y/recommended",
     "prettier",
     "plugin:react/recommended"
   ],
-  "plugins": ["jsx-a11y", "prettier", "react-hooks", "import"],
+  "plugins": ["prettier", "react-hooks", "import"],
   "settings": {
     "react": {
       "version": "detect"
