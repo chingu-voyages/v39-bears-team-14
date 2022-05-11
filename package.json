@@ -5,6 +5,11 @@
   "author": "ShizukuIchi <shizukuichi@gmail.com>",
   "homepage": "https://winxp.now.sh",
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "5.6.2",
+    "@mui/material": "^5.7.0",
+    "@mui/styles": "5.7.0",
     "@reduxjs/toolkit": "^1.8.1",
     "lodash.samplesize": "^4.2.0",
     "react": "^17.0.2",
@@ -39,7 +44,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^8.14.0",
+    "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-prettier": "^4.0.0",

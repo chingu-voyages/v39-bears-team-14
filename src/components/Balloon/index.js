@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
 
 import risk from 'assets/windowsIcons/229(16x16).png';
+import styled, { keyframes } from 'styled-components';
 
 // Popup alert balloon to "inform" user that antivirus is not installed.
 // Appears at bottom right corner.

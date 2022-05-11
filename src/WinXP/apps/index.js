@@ -1,21 +1,25 @@
-import InternetExplorer from './InternetExplorer';
-import Minesweeper from './Minesweeper';
-import ErrorBox from './ErrorBox';
-import MyComputer from './MyComputer';
-import Notepad from './Notepad';
-import Winamp from './Winamp';
-import Paint from './Paint';
-import iePaper from 'assets/windowsIcons/ie-paper.png';
-import ie from 'assets/windowsIcons/ie.png';
 import mine from 'assets/minesweeper/mine-icon.png';
-import error from 'assets/windowsIcons/897(16x16).png';
-import computer from 'assets/windowsIcons/676(16x16).png';
-import computerLarge from 'assets/windowsIcons/676(32x32).png';
 import notepad from 'assets/windowsIcons/327(16x16).png';
 import notepadLarge from 'assets/windowsIcons/327(32x32).png';
-import winamp from 'assets/windowsIcons/winamp.png';
-import paintLarge from 'assets/windowsIcons/680(32x32).png';
+import computer from 'assets/windowsIcons/676(16x16).png';
+import computerLarge from 'assets/windowsIcons/676(32x32).png';
 import paint from 'assets/windowsIcons/680(16x16).png';
+import paintLarge from 'assets/windowsIcons/680(32x32).png';
+import error from 'assets/windowsIcons/897(16x16).png';
+import iePaper from 'assets/windowsIcons/ie-paper.png';
+import ie from 'assets/windowsIcons/ie.png';
+import soundcloud from 'assets/windowsIcons/soundcloud(16x16).png'; // https://publicdomainvectors.org/en/free-clipart/Vector-image-of-music-icons/30830.html
+import soundcloudLarge from 'assets/windowsIcons/soundcloud(32x32).png';
+import winamp from 'assets/windowsIcons/winamp.png';
+
+import ErrorBox from './ErrorBox';
+import InternetExplorer from './InternetExplorer';
+import Minesweeper from './Minesweeper';
+import MyComputer from './MyComputer';
+import Notepad from './Notepad';
+import Paint from './Paint';
+import SoundCloudPlayer from './SoundCloudPlayer';
+import Winamp from './Winamp';
 
 const gen = () => {
   let id = -1;
@@ -108,6 +112,26 @@ export const defaultAppState = [
     id: genId(),
     zIndex: genIndex(),
   },
+  {
+    component: SoundCloudPlayer,
+    header: {
+      icon: soundcloud,
+      title: 'SoundCloudPlayer',
+    },
+    defaultSize: {
+      width: 330,
+      height: 250,
+    },
+    defaultOffset: {
+      x: 270,
+      y: 60,
+    },
+    resizable: true,
+    minimized: false,
+    maximized: window.innerWidth < 800,
+    id: genId(),
+    zIndex: genIndex(),
+  },
 ];
 
 export const defaultIconState = [
@@ -151,6 +175,13 @@ export const defaultIconState = [
     icon: paintLarge,
     title: 'Paint',
     component: Paint,
+    isFocus: false,
+  },
+  {
+    id: 6,
+    icon: soundcloudLarge,
+    title: 'SoundCloudPlayer',
+    component: SoundCloudPlayer,
     isFocus: false,
   },
 ];
@@ -292,6 +323,33 @@ export const appSettings = {
     maximized: window.innerWidth < 800,
     multiInstance: true,
   },
+  SoundCloudPlayer: {
+    header: {
+      icon: soundcloud,
+      title: 'SoundCloudPlayer',
+    },
+    component: SoundCloudPlayer,
+    defaultSize: {
+      width: 330,
+      height: 250,
+    },
+    defaultOffset: {
+      x: 270,
+      y: 60,
+    },
+    resizable: true,
+    minimized: false,
+    maximized: window.innerWidth < 800,
+    multiInstance: false,
+  },
 };
 
-export { InternetExplorer, Minesweeper, ErrorBox, MyComputer, Notepad, Winamp };
+export {
+  InternetExplorer,
+  Minesweeper,
+  ErrorBox,
+  MyComputer,
+  Notepad,
+  Winamp,
+  SoundCloudPlayer,
+};

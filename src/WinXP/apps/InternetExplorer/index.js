@@ -1,26 +1,27 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 
-import { WindowDropDowns, Google } from 'components';
-import dropDownData from './dropDownData';
-import ie from 'assets/windowsIcons/ie-paper.png';
 import printer from 'assets/windowsIcons/17(32x32).png';
 import go from 'assets/windowsIcons/290.png';
-import links from 'assets/windowsIcons/links.png';
 import search from 'assets/windowsIcons/299(32x32).png';
 import favorite from 'assets/windowsIcons/744(32x32).png';
 import back from 'assets/windowsIcons/back.png';
+import dropdown from 'assets/windowsIcons/dropdown.png';
 import earth from 'assets/windowsIcons/earth.png';
 import edit from 'assets/windowsIcons/edit.png';
 import forward from 'assets/windowsIcons/forward.png';
 import history from 'assets/windowsIcons/history.png';
 import home from 'assets/windowsIcons/home.png';
+import ie from 'assets/windowsIcons/ie-paper.png';
+import links from 'assets/windowsIcons/links.png';
 import mail from 'assets/windowsIcons/mail.png';
 import msn from 'assets/windowsIcons/msn.png';
 import refresh from 'assets/windowsIcons/refresh.png';
 import stop from 'assets/windowsIcons/stop.png';
 import windows from 'assets/windowsIcons/windows.png';
-import dropdown from 'assets/windowsIcons/dropdown.png';
+import { WindowDropDowns, Google } from 'components';
+import styled from 'styled-components';
+
+import dropDownData from './dropDownData';
 
 function InternetExplorer({ onClose }) {
   const [state, setState] = useState({
