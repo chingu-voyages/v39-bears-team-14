@@ -11,6 +11,7 @@
     }
   },
   "rules": {
+    "no-case-declarations": 0,
     "semi": 1,
     "eqeqeq": "error",
     "no-console": "warn",
