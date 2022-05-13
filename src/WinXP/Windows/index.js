@@ -1,8 +1,9 @@
 import { useRef, memo } from 'react';
+
+import { useElementResize } from 'hooks';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import styled from 'styled-components';
 
-import { useElementResize } from 'hooks';
 import HeaderButtons from './HeaderButtons';
 
 function Windows({

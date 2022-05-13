@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import styled from 'styled-components';
 
 import errorSoundSrc from 'assets/sounds/error.wav';
 import error from 'assets/windowsIcons/897(32x32).png';
+import styled from 'styled-components';
 
 function lineBreak(str) {
   return str.split('\n').map((s, i) => (

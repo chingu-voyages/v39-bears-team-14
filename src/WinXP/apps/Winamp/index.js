@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
+
 import Webamp from 'webamp';
+
 import { initialTracks } from './config';
 
 function Winamp({ onClose, onMinimize }) {

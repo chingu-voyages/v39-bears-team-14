@@ -1,30 +1,30 @@
-import styled from 'styled-components';
-import ga from 'react-ga';
-
-import { WindowDropDowns } from 'components';
-import dropDownData from './dropDownData';
-import go from 'assets/windowsIcons/290.png';
-import search from 'assets/windowsIcons/299(32x32).png';
-import computer from 'assets/windowsIcons/676(16x16).png';
-import back from 'assets/windowsIcons/back.png';
-import forward from 'assets/windowsIcons/forward.png';
-import up from 'assets/windowsIcons/up.png';
-import viewInfo from 'assets/windowsIcons/view-info.ico';
-import remove from 'assets/windowsIcons/302(16x16).png';
-import control from 'assets/windowsIcons/300(16x16).png';
-import network from 'assets/windowsIcons/693(16x16).png';
-import document from 'assets/windowsIcons/308(16x16).png';
-import folderSmall from 'assets/windowsIcons/318(16x16).png';
-import menu from 'assets/windowsIcons/358(32x32).png';
-import folder from 'assets/windowsIcons/318(48x48).png';
-import folderOpen from 'assets/windowsIcons/337(32x32).png';
-import disk from 'assets/windowsIcons/334(48x48).png';
-import cd from 'assets/windowsIcons/111(48x48).png';
-import dropdown from 'assets/windowsIcons/dropdown.png';
-import pullup from 'assets/windowsIcons/pullup.png';
 import logo from 'assets/github-logo.png';
 import mine from 'assets/minesweeper/mine-icon.png';
+import cd from 'assets/windowsIcons/111(48x48).png';
+import go from 'assets/windowsIcons/290.png';
+import search from 'assets/windowsIcons/299(32x32).png';
+import control from 'assets/windowsIcons/300(16x16).png';
+import remove from 'assets/windowsIcons/302(16x16).png';
+import document from 'assets/windowsIcons/308(16x16).png';
+import folderSmall from 'assets/windowsIcons/318(16x16).png';
+import folder from 'assets/windowsIcons/318(48x48).png';
+import disk from 'assets/windowsIcons/334(48x48).png';
+import folderOpen from 'assets/windowsIcons/337(32x32).png';
+import menu from 'assets/windowsIcons/358(32x32).png';
+import computer from 'assets/windowsIcons/676(16x16).png';
+import network from 'assets/windowsIcons/693(16x16).png';
+import back from 'assets/windowsIcons/back.png';
+import dropdown from 'assets/windowsIcons/dropdown.png';
+import forward from 'assets/windowsIcons/forward.png';
+import pullup from 'assets/windowsIcons/pullup.png';
+import up from 'assets/windowsIcons/up.png';
+import viewInfo from 'assets/windowsIcons/view-info.ico';
 import windows from 'assets/windowsIcons/windows.png';
+import { WindowDropDowns } from 'components';
+import ga from 'react-ga';
+import styled from 'styled-components';
+
+import dropDownData from './dropDownData';
 
 function MyComputer({ onClose }) {
   function onClickOptionItem(item) {

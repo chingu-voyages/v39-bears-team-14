@@ -9,6 +9,8 @@ export const SELECT_ICONS = 'SELECT_ICONS';
 
 export const FOCUS_DESKTOP = 'FOCUS_DESKTOP';
 
+export const FOCUS_START_MENU = 'FOCUS_START_MENU';
+
 export const START_SELECT = 'START_SELECT';
 export const END_SELECT = 'END_SELECT';
 

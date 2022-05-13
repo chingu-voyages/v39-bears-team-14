@@ -1,9 +1,13 @@
 // This is the "main" WinXP component
 import { useReducer, useRef, useCallback, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-import useMouse from 'react-use/lib/useMouse';
-import ga from 'react-ga';
 
+import { DashedBox } from 'components';
+import ga from 'react-ga';
+import useMouse from 'react-use/lib/useMouse';
+import styled, { keyframes } from 'styled-components';
+
+import { defaultIconState, defaultAppState, appSettings } from './apps';
+import { FOCUSING, POWER_STATE } from './constants';
 import {
   ADD_APP,
   DEL_APP,
@@ -13,18 +17,16 @@ import {
   FOCUS_ICON,
   SELECT_ICONS,
   FOCUS_DESKTOP,
+  FOCUS_START_MENU,
   START_SELECT,
   END_SELECT,
   POWER_OFF,
   CANCEL_POWER_OFF,
 } from './constants/actions';
-import { FOCUSING, POWER_STATE } from './constants';
-import { defaultIconState, defaultAppState, appSettings } from './apps';
-import Modal from './Modal';
 import Footer from './Footer';
-import Windows from './Windows';
 import Icons from './Icons';
-import { DashedBox } from 'components';
+import Modal from './Modal';
+import Windows from './Windows';
 
 const initState = {
   apps: defaultAppState,
@@ -150,6 +152,15 @@ const reducer = (state, action = { type: '' }) => {
           isFocus: false,
         })),
       };
+    case FOCUS_START_MENU:
+      return {
+        ...state,
+        focusing: FOCUSING.START_MENU,
+        icons: state.icons.map((icon) => ({
+          ...icon,
+          isFocus: false,
+        })),
+      };
     case START_SELECT:
       return {
         ...state,
@@ -181,6 +192,7 @@ const reducer = (state, action = { type: '' }) => {
 };
 function WinXP() {
   const [state, dispatch] = useReducer(reducer, initState);
+  // console.log(state.focusing); // TODO remove this console.log
   const [menuOn, setMenuOn] = useState(false);
   const ref = useRef(null);
   const mouse = useMouse(ref);
@@ -213,6 +225,7 @@ function WinXP() {
     [focusedAppId],
   );
   function onMouseDownFooterApp(id) {
+    // when clicking applications on the taskbar
     dispatch({
       type: focusedAppId === id ? MINIMIZE_APP : FOCUS_APP,
       payload: id,
@@ -319,6 +332,7 @@ function WinXP() {
         onClickMenuItem={onClickMenuItem}
         menuOn={menuOn}
         setMenuOn={setMenuOn}
+        dispatch={dispatch}
       />
       {state.powerState !== POWER_STATE.START && (
         <Modal

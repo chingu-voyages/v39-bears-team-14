@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import styled from 'styled-components';
+
 import smile from './smile.svg';
 
 function Main({ onSearch, className }) {

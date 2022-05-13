@@ -1,12 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
+
+import risk from 'assets/windowsIcons/229(16x16).png';
+import usb from 'assets/windowsIcons/394(16x16).png';
+import sound from 'assets/windowsIcons/690(16x16).png';
+import startButton from 'assets/windowsIcons/start.png';
+import Balloon from 'components/Balloon';
 import styled from 'styled-components';
+import { FOCUS_START_MENU } from 'WinXP/constants/actions';
 
 import FooterMenu from './FooterMenu';
-import Balloon from 'components/Balloon';
-import startButton from 'assets/windowsIcons/start.png';
-import sound from 'assets/windowsIcons/690(16x16).png';
-import usb from 'assets/windowsIcons/394(16x16).png';
-import risk from 'assets/windowsIcons/229(16x16).png';
 
 const getTime = () => {
   const date = new Date();
@@ -34,11 +36,13 @@ function Footer({
   onClickMenuItem,
   menuOn,
   setMenuOn,
+  dispatch,
 }) {
   const [time, setTime] = useState(getTime);
 
   const menu = useRef(null);
   function toggleMenu() {
+    // Set start menu visibility
     setMenuOn((on) => !on);
   }
   function _onMouseDown(e) {
