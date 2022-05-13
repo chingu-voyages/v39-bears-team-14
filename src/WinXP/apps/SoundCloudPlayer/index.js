@@ -56,9 +56,15 @@ function NextTrackButton({ onClick }) {
   );
 }
 
-function FavouriteButton({ onClick }) {
+function FavouriteButton({ disabled, onClick }) {
   return (
-    <Button variant="contained" onClick={onClick} disableRipple color="info">
+    <Button
+      variant="contained"
+      disabled={disabled}
+      onClick={onClick}
+      disableRipple
+      color="info"
+    >
       <Favorite />
     </Button>
   );
@@ -67,6 +73,7 @@ function FavouriteButton({ onClick }) {
 export default function SoundCloudPlayer({ onClose }) {
   const [songTitle, setSongTitle] = useState(null);
   const [songArtist, setSongArtist] = useState(null);
+  const [songURL, setSongURL] = useState(null);
   const [songPosition, setSongPosition] = useState(0);
   const [songDuration, setSongDuration] = useState('-');
 
@@ -99,6 +106,7 @@ export default function SoundCloudPlayer({ onClose }) {
         player.getCurrentSound((currentSound) => {
           setSongTitle(currentSound.title);
           setSongArtist(currentSound.user.username);
+          setSongURL(currentSound.permalink_url);
         });
       });
 
@@ -194,8 +202,9 @@ export default function SoundCloudPlayer({ onClose }) {
           <PlayPauseButton play={isPlaying} onClick={togglePlayback} />
           <NextTrackButton onClick={() => changePlaylistIndex(true)} />
           <FavouriteButton
+            disabled={songTitle === null}
             onClick={() => {
-              console.log('favourite button pressed!');
+              console.log(`Add song ` + songURL + ` to favourites`);
             }}
           />
         </Grid>
