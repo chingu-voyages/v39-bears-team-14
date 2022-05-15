@@ -1,0 +1,22 @@
+table td {
+    border: 1px solid gray;
+    width: 100px;
+    height: 100px;
+}
+
+.winner {
+    font-size: 20px;
+}
+
+.play-again {
+    margin-bottom: 2rem;
+}
+
+table {
+    margin: auto;
+    font-size: 32px;
+}
+
+.window-width {
+    width: 400px;
+}
