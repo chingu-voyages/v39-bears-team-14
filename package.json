@@ -20,7 +20,8 @@
     "react-scripts": "5.0.1",
     "react-use": "^17.3.2",
     "styled-components": "^5.3.5",
-    "webamp": "^1.5.0"
+    "webamp": "^1.5.0",
+    "xp.css": "^0.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

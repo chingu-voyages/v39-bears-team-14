@@ -1,10 +1,16 @@
-import React, { useState } from "react";
-import "../TicTacToe/TicTacToe.css";
-import "xp.css/dist/XP.css";
+import React, { useState } from 'react';
 
-function TicTacToe() {
-  const [turn, setTurn] = useState("x");
-  const [cells, setCells] = useState(Array(9).fill(""));
+import styled from '@emotion/styled';
+import './index.css';
+// import 'xp.css/dist/XP.css';
+
+const Cell = ({ num, handleClick, cells }) => {
+  return <td onClick={() => handleClick(num)}>{cells[num]}</td>;
+};
+
+export default function TicTacToe({ onClose }) {
+  const [turn, setTurn] = useState('x');
+  const [cells, setCells] = useState(Array(9).fill(''));
   const [winner, setWinner] = useState();
 
   const checkForWinner = (squares) => {
@@ -36,68 +42,64 @@ function TicTacToe() {
     }
   };
 
-  const handleClick = (num) => {
+  function handleClick(num) {
     let squares = [...cells];
-    if (cells[num] !== "") {
+    if (cells[num] !== '') {
       return;
     }
 
-    if (turn === "x") {
-      squares[num] = "x";
-      setTurn("o");
+    if (turn === 'x') {
+      squares[num] = 'x';
+      setTurn('o');
     } else {
-      squares[num] = "o";
-      setTurn("x");
+      squares[num] = 'o';
+      setTurn('x');
     }
+
     setCells(squares);
     checkForWinner(squares);
-  };
+  }
 
   const handleRestart = () => {
     setWinner(null);
-    setCells(Array(9).fill(""));
+    setCells(Array(9).fill(''));
   };
 
-  const Cell = ({ num }) => {
-    return <td onClick={() => handleClick(num)}>{cells[num]}</td>;
-  };
   return (
-    <section class="window window-width">
-      <div class="title-bar">
-        <div class="title-bar-text">Tic Tac Toe</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
+    <Div>
+      {winner && (
+        <div>
+          <p className="winner">{winner} is the winner!</p>
+          <button className="play-again" onClick={() => handleRestart()}>
+            Play Again
+          </button>
         </div>
-      </div>
-      <div class="window-body">
-        {winner && (
-          <div>
-            <p className="winner">{winner} is the winner!</p>
-            <button className="play-again" onClick={() => handleRestart()}>Play Again</button>
-          </div>
-        )}
-        <table>
-          <tbody>
-            <tr>
-              <Cell num={0} />
-              <Cell num={1} />
-              <Cell num={2} />
-            </tr>
-            <tr>
-              <Cell num={3} />
-              <Cell num={4} />
-              <Cell num={5} />
-            </tr>
-            <tr>
-              <Cell num={6} />
-              <Cell num={7} />
-              <Cell num={8} />
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      )}
+      <table>
+        <tr>
+          <Cell num={0} handleClick={handleClick} cells={cells} />
+          <Cell num={1} handleClick={handleClick} cells={cells} />
+          <Cell num={2} handleClick={handleClick} cells={cells} />
+        </tr>
+        <tr>
+          <Cell num={3} handleClick={handleClick} cells={cells} />
+          <Cell num={4} handleClick={handleClick} cells={cells} />
+          <Cell num={5} handleClick={handleClick} cells={cells} />
+        </tr>
+        <tr>
+          <Cell num={6} handleClick={handleClick} cells={cells} />
+          <Cell num={7} handleClick={handleClick} cells={cells} />
+          <Cell num={8} handleClick={handleClick} cells={cells} />
+        </tr>
+      </table>
+    </Div>
   );
 }
+
+const Div = styled.div`
+  height: 100%;
+  background: linear-gradient(to right, #edede5 0%, #ede8cd 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+`;

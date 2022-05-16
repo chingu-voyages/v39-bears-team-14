@@ -49,7 +49,7 @@ function Main({ onSearch, className }) {
           <button onClick={onClick} id="enter">
             Google Search
           </button>
-          <button>I'm Feeling Lucky</button>
+          <button>{"I'm Feeling Lucky"}</button>
         </div>
       </section>
       <footer>

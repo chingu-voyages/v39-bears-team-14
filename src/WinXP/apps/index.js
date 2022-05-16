@@ -10,6 +10,8 @@ import iePaper from 'assets/windowsIcons/ie-paper.png';
 import ie from 'assets/windowsIcons/ie.png';
 import soundcloud from 'assets/windowsIcons/soundcloud(16x16).png'; // https://publicdomainvectors.org/en/free-clipart/Vector-image-of-music-icons/30830.html
 import soundcloudLarge from 'assets/windowsIcons/soundcloud(32x32).png';
+import tictactoe from 'assets/windowsIcons/tictactoe(16x16).png';
+import tictactoeLarge from 'assets/windowsIcons/tictactoe(32x32).png';
 import winamp from 'assets/windowsIcons/winamp.png';
 
 import ErrorBox from './ErrorBox';
@@ -19,6 +21,7 @@ import MyComputer from './MyComputer';
 import Notepad from './Notepad';
 import Paint from './Paint';
 import SoundCloudPlayer from './SoundCloudPlayer';
+import TicTacToe from './TicTacToe';
 import Winamp from './Winamp';
 
 const gen = () => {
@@ -132,6 +135,26 @@ export const defaultAppState = [
     id: genId(),
     zIndex: genIndex(),
   },
+  {
+    component: TicTacToe,
+    header: {
+      icon: tictactoe,
+      title: 'Tic Tac Toe',
+    },
+    defaultSize: {
+      width: 330,
+      height: 550,
+    },
+    defaultOffset: {
+      x: 270,
+      y: 60,
+    },
+    resizable: true,
+    minimized: false,
+    maximized: window.innerWidth < 800,
+    id: genId(),
+    zIndex: genIndex(),
+  },
 ];
 
 export const defaultIconState = [
@@ -182,6 +205,13 @@ export const defaultIconState = [
     icon: soundcloudLarge,
     title: 'SoundCloudPlayer',
     component: SoundCloudPlayer,
+    isFocus: false,
+  },
+  {
+    id: 7,
+    icon: tictactoeLarge,
+    title: 'Tic Tac Toe',
+    component: TicTacToe,
     isFocus: false,
   },
 ];
@@ -342,6 +372,25 @@ export const appSettings = {
     maximized: window.innerWidth < 800,
     multiInstance: false,
   },
+  TicTacToe: {
+    header: {
+      icon: tictactoe,
+      title: 'Tic Tac Toe',
+    },
+    component: TicTacToe,
+    defaultSize: {
+      width: 330,
+      height: 550,
+    },
+    defaultOffset: {
+      x: 270,
+      y: 60,
+    },
+    resizable: true,
+    minimized: false,
+    maximized: window.innerWidth < 800,
+    multiInstance: false,
+  },
 };
 
 export {
@@ -352,4 +401,5 @@ export {
   Notepad,
   Winamp,
   SoundCloudPlayer,
+  TicTacToe,
 };

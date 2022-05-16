@@ -304,7 +304,7 @@ function MyComputer({ onClose }) {
                   />
                   <div className="com__content__right__card__img-container">
                     <div className="com__content__right__card__text">
-                      User's Documents
+                      {"User's Documents"}
                     </div>
                   </div>
                 </div>
