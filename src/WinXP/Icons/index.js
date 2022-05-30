@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import React from 'react';
 
 import styled from 'styled-components';
 import { SELECT_ICONS } from 'WinXP/constants/actions';

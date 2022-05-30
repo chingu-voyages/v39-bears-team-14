@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import React from 'react';
 
 import risk from 'assets/windowsIcons/229(16x16).png';
 import styled, { keyframes } from 'styled-components';

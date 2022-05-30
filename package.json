@@ -14,15 +14,14 @@
     "@supabase/supabase-js": "^1.35.3",
     "load-script": "^2.0.0",
     "lodash.samplesize": "^4.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-ga": "^3.3.0",
-    "react-redux": "^8.0.2",
-    "react-scripts": "5.0.1",
-    "react-use": "^17.4.0",
-    "styled-components": "^5.3.5",
-    "webamp": "^1.5.0",
-    "xp.css": "^0.3.0"
+
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-ga": "^2.5.7",
+    "react-scripts": "3.1.1",
+    "react-use": "^7.0.1",
+    "styled-components": "^4.2.0",
+    "react-redux": "^8.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -47,9 +46,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^8.16.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-react-app": "^7.0.1",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.6.2"
   },

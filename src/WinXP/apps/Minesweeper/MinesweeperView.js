@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 import empty from 'assets/empty.png';
 import dead from 'assets/minesweeper/dead.png';

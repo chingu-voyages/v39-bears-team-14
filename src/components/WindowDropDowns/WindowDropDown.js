@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 
 import check from 'assets/windowsIcons/checked.png';
 import folder from 'assets/windowsIcons/folder.png';

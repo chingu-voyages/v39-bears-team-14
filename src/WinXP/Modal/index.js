@@ -1,3 +1,5 @@
+import React from 'react';
+
 import switcher from 'assets/windowsIcons/290.png';
 import off from 'assets/windowsIcons/310(32x32).png';
 import lock from 'assets/windowsIcons/546(32x32).png';

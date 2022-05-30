@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useContext } from 'react';
+import React from 'react';
 
 import {
   Pause,

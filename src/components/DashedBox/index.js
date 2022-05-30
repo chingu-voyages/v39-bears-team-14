@@ -1,3 +1,4 @@
+import React from 'react';
 function DashedBox({ mouse, startPos }) {
   function getRect() {
     return {

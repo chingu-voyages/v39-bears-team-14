@@ -1,4 +1,5 @@
 import { useRef, memo } from 'react';
+import React from 'react';
 
 import { useElementResize } from 'hooks';
 import useWindowSize from 'react-use/lib/useWindowSize';

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 
 import empty from 'assets/empty.png';
 import mine from 'assets/minesweeper/mine-icon.png';

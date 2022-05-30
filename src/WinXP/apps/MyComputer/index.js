@@ -1,3 +1,5 @@
+import React from 'react';
+
 import logo from 'assets/github-logo.png';
 import mine from 'assets/minesweeper/mine-icon.png';
 import cd from 'assets/windowsIcons/111(48x48).png';
@@ -248,7 +250,7 @@ function MyComputer({ onClose }) {
                 <div className="com__content__left__card__row">
                   <img
                     className="com__content__left__card__img"
-                    src="https://image.flaticon.com/icons/png/128/179/179312.png"
+                    src="https://cdn.iconscout.com/icon/free/png-256/medium-1425876-1205067.png"
                     alt="control"
                   />
                   <ga.OutboundLink

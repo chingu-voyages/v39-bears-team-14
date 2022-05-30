@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 import risk from 'assets/windowsIcons/229(16x16).png';
 import usb from 'assets/windowsIcons/394(16x16).png';
