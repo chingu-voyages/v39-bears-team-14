@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 
 import {
   Pause,
@@ -6,10 +6,13 @@ import {
   SkipNext,
   SkipPrevious,
   Favorite,
+  FavoriteBorder,
 } from '@mui/icons-material';
 import { Button, Grid } from '@mui/material';
+import { SessionContext } from 'App';
 import loadscript from 'load-script';
 import styled from 'styled-components';
+import { supabase } from 'supabaseClient';
 
 function SongTitle({ title }) {
   return (
@@ -56,26 +59,30 @@ function NextTrackButton({ onClick }) {
   );
 }
 
-function FavouriteButton({ disabled, onClick }) {
+function FavouriteButton({ disabled, onClick, color, selected }) {
   return (
     <Button
       variant="contained"
       disabled={disabled}
       onClick={onClick}
       disableRipple
-      color="info"
+      color={color}
     >
-      <Favorite />
+      {disabled || selected ? <Favorite /> : <FavoriteBorder />}
     </Button>
   );
 }
 
 export default function SoundCloudPlayer({ onClose }) {
+  const [session, setSession] = useContext(SessionContext);
+
   const [songTitle, setSongTitle] = useState(null);
   const [songArtist, setSongArtist] = useState(null);
   const [songURL, setSongURL] = useState(null);
+  const [songID, setSongID] = useState(null);
   const [songPosition, setSongPosition] = useState(0);
   const [songDuration, setSongDuration] = useState('-');
+  const [songInFavourites, setSongInFavourites] = useState(false);
 
   // used to communicate between SC widget and React
   const [isPlaying, setIsPlaying] = useState(false);
@@ -151,6 +158,36 @@ export default function SoundCloudPlayer({ onClose }) {
     });
   }, [player, playlistIndex]);
 
+  useEffect(() => {
+    async function fetchSongID() {
+      if (songURL === null || !supabase.auth.user()) {
+        return;
+      }
+
+      const { data: songData, songDataError } = await supabase
+        .from('songs')
+        .select('song_id')
+        .eq('soundcloud_url', songURL);
+      if (songDataError || !songData.length) {
+        return;
+      }
+      setSongID(songData[0].song_id);
+      // Check if song already exists in user's favourites
+      const { data: favouriteSongData, favouriteSongDataError } = await supabase
+        .from('profiles_songs')
+        .select('song_id')
+        .eq('profile_id', supabase.auth.user().id)
+        .eq('song_id', songData[0].song_id);
+
+      if (favouriteSongDataError) {
+        return;
+      }
+
+      setSongInFavourites(favouriteSongData.length > 0);
+    }
+    fetchSongID();
+  }, [songURL, songID, session]);
+
   // React section button click event handlers (play/next/previous)
   //  - adjust React component state based on click events
 
@@ -161,8 +198,13 @@ export default function SoundCloudPlayer({ onClose }) {
   const changePlaylistIndex = (skipForward = true) => {
     // get list of songs from SC widget
     player.getSounds((playerSongList) => {
-      let nextIndex = skipForward ? playlistIndex + 1 : playlistIndex - 1;
+      player.seekTo(0);
+      // Stay on same track if rewinding with more than 2 seconds of elapsed playback
+      if (!skipForward && songPosition > 2000) {
+        return;
+      }
 
+      let nextIndex = skipForward ? playlistIndex + 1 : playlistIndex - 1;
       // ensure index is not set to less than 0 or greater than playlist
       if (nextIndex < 0) {
         nextIndex = playerSongList.length - 1;
@@ -202,9 +244,32 @@ export default function SoundCloudPlayer({ onClose }) {
           <PlayPauseButton play={isPlaying} onClick={togglePlayback} />
           <NextTrackButton onClick={() => changePlaylistIndex(true)} />
           <FavouriteButton
-            disabled={songTitle === null}
-            onClick={() => {
-              console.log(`Add song ` + songURL + ` to favourites`);
+            disabled={songTitle === null || !supabase.auth.user()}
+            selected={songInFavourites}
+            color={'error'}
+            onClick={async () => {
+              // Add song to user's favourites if not exists
+              if (!songInFavourites) {
+                const { error } = await supabase.from('profiles_songs').insert([
+                  {
+                    song_id: songID,
+                    profile_id: supabase.auth.user().id,
+                  },
+                ]);
+                if (!error) {
+                  setSongInFavourites(true);
+                }
+              } else {
+                // Otherwise, remove song from favourites
+                const { error } = await supabase
+                  .from('profiles_songs')
+                  .delete()
+                  .eq('profile_id', supabase.auth.user().id)
+                  .eq('song_id', songID);
+                if (!error) {
+                  setSongInFavourites(false);
+                }
+              }
             }}
           />
         </Grid>

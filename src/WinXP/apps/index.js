@@ -1,6 +1,8 @@
 import mine from 'assets/minesweeper/mine-icon.png';
 import notepad from 'assets/windowsIcons/327(16x16).png';
+import guestbook from 'assets/windowsIcons/327(16x16).png';
 import notepadLarge from 'assets/windowsIcons/327(32x32).png';
+import guestbookLarge from 'assets/windowsIcons/327(32x32).png';
 import computer from 'assets/windowsIcons/676(16x16).png';
 import computerLarge from 'assets/windowsIcons/676(32x32).png';
 import paint from 'assets/windowsIcons/680(16x16).png';
@@ -15,6 +17,7 @@ import tictactoeLarge from 'assets/windowsIcons/tictactoe(32x32).png';
 import winamp from 'assets/windowsIcons/winamp.png';
 
 import ErrorBox from './ErrorBox';
+import Guestbook from './Guestbook';
 import InternetExplorer from './InternetExplorer';
 import Minesweeper from './Minesweeper';
 import MyComputer from './MyComputer';
@@ -119,7 +122,7 @@ export const defaultAppState = [
     component: SoundCloudPlayer,
     header: {
       icon: soundcloud,
-      title: 'SoundCloudPlayer',
+      title: 'Jukebox',
     },
     defaultSize: {
       width: 330,
@@ -140,6 +143,26 @@ export const defaultAppState = [
     header: {
       icon: tictactoe,
       title: 'Tic Tac Toe',
+    },
+    defaultSize: {
+      width: 330,
+      height: 550,
+    },
+    defaultOffset: {
+      x: 270,
+      y: 60,
+    },
+    resizable: true,
+    minimized: false,
+    maximized: window.innerWidth < 800,
+    id: genId(),
+    zIndex: genIndex(),
+  },
+  {
+    component: Guestbook,
+    header: {
+      icon: guestbook,
+      title: 'Login/Sign Up',
     },
     defaultSize: {
       width: 330,
@@ -203,7 +226,7 @@ export const defaultIconState = [
   {
     id: 6,
     icon: soundcloudLarge,
-    title: 'SoundCloudPlayer',
+    title: 'Jukebox',
     component: SoundCloudPlayer,
     isFocus: false,
   },
@@ -212,6 +235,13 @@ export const defaultIconState = [
     icon: tictactoeLarge,
     title: 'Tic Tac Toe',
     component: TicTacToe,
+    isFocus: false,
+  },
+  {
+    id: 8,
+    icon: guestbookLarge,
+    title: 'Login/Sign Up',
+    component: Guestbook,
     isFocus: false,
   },
 ];
@@ -356,7 +386,7 @@ export const appSettings = {
   SoundCloudPlayer: {
     header: {
       icon: soundcloud,
-      title: 'SoundCloudPlayer',
+      title: 'Jukebox',
     },
     component: SoundCloudPlayer,
     defaultSize: {
@@ -391,6 +421,25 @@ export const appSettings = {
     maximized: window.innerWidth < 800,
     multiInstance: false,
   },
+  Guestbook: {
+    header: {
+      icon: guestbook,
+      title: 'Login/Sign Up',
+    },
+    component: Guestbook,
+    defaultSize: {
+      width: 330,
+      height: 550,
+    },
+    defaultOffset: {
+      x: 270,
+      y: 60,
+    },
+    resizable: true,
+    minimized: false,
+    maximized: window.innerWidth < 800,
+    multiInstance: false,
+  },
 };
 
 export {
@@ -402,4 +451,5 @@ export {
   Winamp,
   SoundCloudPlayer,
   TicTacToe,
+  Guestbook,
 };
