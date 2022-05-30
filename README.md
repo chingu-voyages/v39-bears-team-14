@@ -1,6 +1,6 @@
 # WinXP
 
-🏁 Web based Windows XP desktop recreation. To be heavily modified by **Chingu v39 Bears Team 14** to make this project even more awesome!
+🏁 Web based Windows XP desktop recreation. Modified by **Chingu v39 Bears Team 14** to make this project even more awesome!
 
 Features:
 
@@ -8,10 +8,13 @@ Features:
 - Open applications from desktop icons or start menu
 - Minesweeper, Internet Explorer, My Computer, Notepad, Winamp, Paint
 - Power off menu
+- Soundcloud Player
+- User Authentication
+- Tic Tac Toe
 
-## ~~[Try it!](https://winxp.now.sh)~~
+## [Try it!](https://main--dashing-snickerdoodle-423842.netlify.app)
 
-~~Windows XP 👉 https://winxp.now.sh~~
+Windows XP 👉 https://main--dashing-snickerdoodle-423842.netlify.app
 
 Our own demo will be up soon!
 
