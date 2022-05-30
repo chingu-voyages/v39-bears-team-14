@@ -1,10 +1,19 @@
 // This is the "main" WinXP component
-import { useReducer, useRef, useCallback, useState } from 'react';
+import {
+  useReducer,
+  useRef,
+  useCallback,
+  useState,
+  useEffect,
+  useContext,
+} from 'react';
 
+import { SessionContext } from 'App';
 import { DashedBox } from 'components';
 import ga from 'react-ga';
 import useMouse from 'react-use/lib/useMouse';
 import styled, { keyframes } from 'styled-components';
+import { supabase } from 'supabaseClient';
 
 import { defaultIconState, defaultAppState, appSettings } from './apps';
 import { FOCUSING, POWER_STATE } from './constants';
@@ -191,6 +200,13 @@ const reducer = (state, action = { type: '' }) => {
   }
 };
 function WinXP() {
+  const [session, setSession] = useContext(SessionContext);
+  useEffect(() => {
+    setSession(supabase.auth.session());
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, [setSession]);
   const [state, dispatch] = useReducer(reducer, initState);
   // console.log(state.focusing); // TODO remove this console.log
   const [menuOn, setMenuOn] = useState(false);

@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "prettier",
-    "plugin:react/recommended"
-  ],
+  "extends": ["eslint:recommended", "prettier", "plugin:react/recommended"],
   "plugins": ["prettier", "react-hooks", "import"],
   "settings": {
     "react": {
