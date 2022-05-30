@@ -97,7 +97,7 @@ export default function SoundCloudPlayer() {
 
   useEffect(() => {
     // use load-script module to load SC Widget API
-    loadscript('https://w.soundcloud.com/player/api.js', () => {
+    loadscript('api.js', () => {
       // initialize player and store reference in state
       const player = window.SC.Widget(iframeRef.current);
       setPlayer(player);

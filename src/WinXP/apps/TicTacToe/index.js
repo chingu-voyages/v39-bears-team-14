@@ -76,21 +76,23 @@ export default function TicTacToe({ onClose }) {
         </div>
       )}
       <table>
-        <tr>
-          <Cell num={0} handleClick={handleClick} cells={cells} />
-          <Cell num={1} handleClick={handleClick} cells={cells} />
-          <Cell num={2} handleClick={handleClick} cells={cells} />
-        </tr>
-        <tr>
-          <Cell num={3} handleClick={handleClick} cells={cells} />
-          <Cell num={4} handleClick={handleClick} cells={cells} />
-          <Cell num={5} handleClick={handleClick} cells={cells} />
-        </tr>
-        <tr>
-          <Cell num={6} handleClick={handleClick} cells={cells} />
-          <Cell num={7} handleClick={handleClick} cells={cells} />
-          <Cell num={8} handleClick={handleClick} cells={cells} />
-        </tr>
+        <tbody>
+          <tr>
+            <Cell num={0} handleClick={handleClick} cells={cells} />
+            <Cell num={1} handleClick={handleClick} cells={cells} />
+            <Cell num={2} handleClick={handleClick} cells={cells} />
+          </tr>
+          <tr>
+            <Cell num={3} handleClick={handleClick} cells={cells} />
+            <Cell num={4} handleClick={handleClick} cells={cells} />
+            <Cell num={5} handleClick={handleClick} cells={cells} />
+          </tr>
+          <tr>
+            <Cell num={6} handleClick={handleClick} cells={cells} />
+            <Cell num={7} handleClick={handleClick} cells={cells} />
+            <Cell num={8} handleClick={handleClick} cells={cells} />
+          </tr>
+        </tbody>
       </table>
     </Div>
   );
