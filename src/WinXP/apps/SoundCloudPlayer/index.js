@@ -73,8 +73,8 @@ function FavouriteButton({ disabled, onClick, color, selected }) {
   );
 }
 
-export default function SoundCloudPlayer({ onClose }) {
-  const [session, setSession] = useContext(SessionContext);
+export default function SoundCloudPlayer() {
+  const [session] = useContext(SessionContext);
 
   const [songTitle, setSongTitle] = useState(null);
   const [songArtist, setSongArtist] = useState(null);

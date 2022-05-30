@@ -5,9 +5,9 @@ import { SessionContext } from 'App';
 import { supabase } from 'supabaseClient';
 // import 'xp.css/dist/XP.css';
 
-export default function Guestbook({ onClose }) {
-  const [session, setSession] = useContext(SessionContext);
-  const [loading, setLoading] = useState(false);
+export default function Guestbook() {
+  const [session] = useContext(SessionContext);
+  const [, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -70,7 +70,7 @@ export default function Guestbook({ onClose }) {
     }
     try {
       setLoading(true);
-      const { user, error } = await supabase.auth.update({
+      const { error } = await supabase.auth.update({
         password: newPassword,
       });
       if (error) {

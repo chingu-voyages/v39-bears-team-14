@@ -200,7 +200,7 @@ const reducer = (state, action = { type: '' }) => {
   }
 };
 function WinXP() {
-  const [session, setSession] = useContext(SessionContext);
+  const [, setSession] = useContext(SessionContext);
   useEffect(() => {
     setSession(supabase.auth.session());
     supabase.auth.onAuthStateChange((_event, session) => {
@@ -301,10 +301,10 @@ function WinXP() {
         },
       });
   }
-  function onMouseUpDesktop(e) {
+  function onMouseUpDesktop() {
     dispatch({ type: END_SELECT });
   }
-  function onClickModalButton(text) {
+  function onClickModalButton() {
     dispatch({ type: CANCEL_POWER_OFF });
     dispatch({
       type: ADD_APP,
